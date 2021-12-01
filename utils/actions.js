@@ -1,4 +1,4 @@
-import {firebaseApp} from './firebase'
+import { firebaseApp } from './firebase'
 import * as firebase from 'firebase'
 import 'firebase/firestore'
 
@@ -12,20 +12,32 @@ export const isUserLogged = () => {
     return isLogged
 }
 
-export const getCurrentUser = () =>{
+export const getCurrentUser = () => {
     return firebase.auth().currentUser
 }
 
-export const closeSession = () =>{
+export const closeSession = () => {
     return firebase.auth().signOut()
 }
 
-export const registerUser = async(email, password) =>{
-    const result = { statusResponse: true, error: null}
-    try{
+export const registerUser = async (email, password) => {
+    const result = { statusResponse: true, error: null }
+    try {
         await firebase.auth().createUserWithEmailAndPassword(email, password)
-    } catch(error){
+    } catch (error) {
+        result.statusResponse = false
         result.error = "Este correo ya se encuentra registrado"
+    }
+    return result
+}
+
+export const loginWithEmailandPassword = async (email, password) => {
+    const result = { statusResponse: true, error: null }
+    try {
+        await firebase.auth().signInWithEmailAndPassword(email, password)
+    } catch (error) {
+        result.statusResponse = false
+        result.error = "Usuario o contraseña invalido"
     }
     return result
 }
