@@ -1,7 +1,7 @@
 import * as Permissions from 'expo-permissions'
 import * as ImagePicker from 'expo-image-picker'
 import * as Location from 'expo-location'
-import { Alert } from 'react-native'
+import { Alert, Linking } from 'react-native'
 import { size } from 'lodash'
 
 export function validateEmail(email) {
