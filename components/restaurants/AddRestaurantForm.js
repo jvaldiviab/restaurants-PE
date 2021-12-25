@@ -40,7 +40,7 @@ export default function AddRestaurantForm({ toastRef, setLoading, navigation }) 
             location: locationRestaurant,
             email: formData.email,
             images: responseUploadImages,
-            quantityVoting:0,
+            quantityVoting: 0,
             rating: 0,
             ratingTotal: 0,
             createAt: new Date(),
@@ -176,7 +176,7 @@ function MapRestaurant({ isVisibleMap, setIsVisibleMap, setLocationRestaurant, t
     }
 
     return (
-        <Modal isVisible={isVisibleMap} setIsVisible={isVisibleMap}>
+        <Modal isVisible={isVisibleMap} setVisible={setIsVisibleMap}>
             <View>
                 {
                     newRegion && (
